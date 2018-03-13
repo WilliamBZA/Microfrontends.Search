@@ -4,10 +4,11 @@
   "files": [
     "SearchWeb/wwwroot/dist/search.js",
     "SearchWeb/wwwroot/dist/search.js.map",
-    "SearchWeb/ClientApp/searchmodule.d.ts"
+    "SearchWeb/ClientApp/searchmodule.d.ts",
+    "SearchWeb/ClientApp/searchmodule.tsx"
   ],
   "typings": "SearchWeb/ClientApp/searchmodule.d.ts",
-  "main": "SearchWeb/wwwroot/dist/search.js",
+  "main": "SearchWeb/ClientApp/searchmodule.tsx",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
