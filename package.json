@@ -4,9 +4,9 @@
   "files": [
     "SearchWeb/wwwroot/dist/search.js",
     "SearchWeb/wwwroot/dist/search.js.map",
-    "SearchWeb/wwwroot/dist/search.d.ts"
+    "SearchWeb/wwwroot/dist/searchmodule.d.ts"
   ],
-  "typings": "SearchWeb/wwwroot/dist/search.d.ts",
+  "typings": "SearchWeb/wwwroot/dist/searchmodule.d.ts",
   "main": "SearchWeb/wwwroot/dist/search.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
