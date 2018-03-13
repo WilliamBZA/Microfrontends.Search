@@ -2,7 +2,7 @@
 
 class SearchInput extends React.Component<{}, {}> {
     public render() {
-        return <div>Search mutha fucka</div>;
+        return <div>Search mutha fuffffa</div>;
     }
 }
 
