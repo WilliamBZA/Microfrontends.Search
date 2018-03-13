@@ -5,7 +5,7 @@
     "SearchWeb/wwwroot/dist/search.js",
     "SearchWeb/wwwroot/dist/search.js.map"
   ],
-  "main": "wwwroot/dist/search.js",
+  "main": "SearchWeb/wwwroot/dist/search.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
