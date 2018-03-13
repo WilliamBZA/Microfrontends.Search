@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { RouteComponentProps } from 'react-router';
-export declare class SearchInput extends React.Component<RouteComponentProps<{}>, {}> {
+export declare class SearchInput extends React.Component<any, any> {
     render(): JSX.Element;
 }
