@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "files": [
     "SearchWeb/ClientApp/searchmodule.d.ts",
-    "SearchWeb/ClientApp/searchmodule.tsx"
+    "SearchWeb/ClientApp/searchmodule.tsx",
+    "SearchWeb/ClientApp/thumbnail.d.ts",
+    "SearchWeb/ClientApp/thumbnail.tsx"
   ],
-  "typings": "SearchWeb/ClientApp/searchmodule.d.ts",
   "main": "SearchWeb/ClientApp/searchmodule.tsx",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

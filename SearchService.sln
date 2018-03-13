@@ -5,7 +5,12 @@ VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SearchService", "SearchService\SearchService.csproj", "{C6BCEE9D-2BDE-4C12-8D65-305F8B3B0A73}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SearchWeb", "SearchWeb\SearchWeb.csproj", "{0EF5CB0F-35CF-4599-96B1-00FA490A2EA5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SearchWeb", "SearchWeb\SearchWeb.csproj", "{0EF5CB0F-35CF-4599-96B1-00FA490A2EA5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F81C6D97-C364-47C8-A58E-DB656DEF2F4A}"
+	ProjectSection(SolutionItems) = preProject
+		package.json = package.json
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
