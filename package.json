@@ -1,0 +1,5 @@
+{
+    "name": "Microfrontends.Search",
+    "version": "1.0.0.0",
+    "files": ["./SearchWeb/wwwroot/dist/search.js", "./SearchWeb/wwwroot/dist/search.js.map"]
+}
