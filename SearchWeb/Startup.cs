@@ -1,7 +1,10 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
+using ITOps.Composition;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SpaServices.Webpack;
@@ -22,7 +25,7 @@ namespace SearchWeb
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc();
+            RegisterDataProviders(services.AddMvc());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -54,6 +57,28 @@ namespace SearchWeb
                     name: "spa-fallback",
                     defaults: new { controller = "Home", action = "Index" });
             });
+        }
+
+        private void RegisterDataProviders(IMvcBuilder builder)
+        {
+            builder.Services.AddSingleton<RequestComposer>();
+
+            var assemblies = Directory.GetFiles(AppContext.BaseDirectory, "*.dll");
+            foreach (var assemblyFilename in assemblies)
+            {
+                var dataProviders = Assembly.LoadFrom(assemblyFilename).GetTypes()
+                    .Where(t =>
+                    {
+                        var typeInfo = t.GetTypeInfo();
+
+                        return !typeInfo.IsInterface && typeof(IProvideData).IsAssignableFrom(t);
+                    });
+
+                foreach (var provider in dataProviders)
+                {
+                    builder.Services.Add(new ServiceDescriptor(typeof(IProvideData), provider, ServiceLifetime.Transient));
+                }
+            }
         }
     }
 }
