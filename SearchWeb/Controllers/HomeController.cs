@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using SearchService;
 
 namespace SearchWeb.Controllers
 {
@@ -18,6 +19,16 @@ namespace SearchWeb.Controllers
         {
             ViewData["RequestId"] = Activity.Current?.Id ?? HttpContext.TraceIdentifier;
             return View();
+        }
+
+        public async Task<IActionResult> MovieDetails(string movieTitle)
+        {
+            var searchProvider = new SimpleTitleFilterProvider();
+
+
+            var movie = (await searchProvider.SearchForMovies(movieTitle)).FirstOrDefault();
+
+            return Json(movie);
         }
     }
 }

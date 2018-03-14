@@ -19,7 +19,7 @@ namespace SearchWeb.Controllers
         }
 
         [HttpGet]
-        public async Task<dynamic> Get(string id)
+        public async Task<dynamic> Get()
         {
             return await composer.ServiceRequest(Request.HttpContext);
         }

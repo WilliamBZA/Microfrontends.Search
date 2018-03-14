@@ -3,11 +3,13 @@ import { RouteComponentProps } from 'react-router';
 
 export class Thumbnail extends React.Component<any, any> {
     movieSummary: any;
+    urlProvider: (movieTitle: string) => string;
 
     constructor(props: any) {
         super(props);
 
         this.movieSummary = props.movieSummary;
+        this.urlProvider = props.urlProvider;
     }
 
     public render() {
@@ -19,7 +21,7 @@ export class Thumbnail extends React.Component<any, any> {
         return <div className="thumbnail">
             <img className="group list-group-image" src={thumbnail} alt="" />
             <div className="caption">
-                <h4 className="group inner list-group-item-heading"><a href={"/movie/" + this.movieSummary.title}>{this.movieSummary.title}</a></h4>
+                <h4 className="group inner list-group-item-heading"><a href={this.urlProvider(this.movieSummary.title)}>{this.movieSummary.title}</a></h4>
                 <hr />
                 <p className="group inner list-group-item-text">{this.movieSummary.description}</p>
                 <div className="row">
@@ -43,8 +45,12 @@ export class Thumbnail extends React.Component<any, any> {
 }
 
 export class SearchInput extends React.Component<any, any> {
+    urlProvider: (movieTitle: string) => string;
+
     constructor(props: any) {
         super(props);
+
+        this.urlProvider = props.urlProvider;
 
         fetch('api/Data/?search=')
             .then(response => response.json())
@@ -101,7 +107,7 @@ export class SearchInput extends React.Component<any, any> {
             return <div key={"row" + index} className="row">
                 {row.map((movie: any) => {
                     return <div key={movie.title} className="col-lg-4">
-                        <Thumbnail movieSummary={movie} />
+                        <Thumbnail movieSummary={movie} urlProvider={this.urlProvider} />
                     </div>
                 })}
             </div>

@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "085fc5a0584aba4caa35"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "18104b623799602de7a2"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -2801,6 +2801,7 @@ var Thumbnail = (function (_super) {
     function Thumbnail(props) {
         var _this = _super.call(this, props) || this;
         _this.movieSummary = props.movieSummary;
+        _this.urlProvider = props.urlProvider;
         return _this;
     }
     Thumbnail.prototype.render = function () {
@@ -2812,7 +2813,7 @@ var Thumbnail = (function (_super) {
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { className: "group list-group-image", src: thumbnail, alt: "" }),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "caption" },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", { className: "group inner list-group-item-heading" },
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("a", { href: "/movie/" + this.movieSummary.title }, this.movieSummary.title)),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("a", { href: this.urlProvider(this.movieSummary.title) }, this.movieSummary.title)),
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("hr", null),
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("p", { className: "group inner list-group-item-text" }, this.movieSummary.description),
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "row" },
@@ -2830,6 +2831,7 @@ var SearchInput = (function (_super) {
     __extends(SearchInput, _super);
     function SearchInput(props) {
         var _this = _super.call(this, props) || this;
+        _this.urlProvider = props.urlProvider;
         fetch('api/Data/?search=')
             .then(function (response) { return response.json(); })
             .then(function (data) {
@@ -2862,6 +2864,7 @@ var SearchInput = (function (_super) {
         event.preventDefault();
     };
     SearchInput.prototype.render = function () {
+        var _this = this;
         if (this.state.loading) {
             return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null, "Loading...");
         }
@@ -2878,7 +2881,7 @@ var SearchInput = (function (_super) {
             tripleMovies.map(function (row, index) {
                 return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { key: "row" + index, className: "row" }, row.map(function (movie) {
                     return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { key: movie.title, className: "col-lg-4" },
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](Thumbnail, { movieSummary: movie }));
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](Thumbnail, { movieSummary: movie, urlProvider: _this.urlProvider }));
                 }));
             }));
     };
@@ -8982,9 +8985,12 @@ var Home = (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     Home.prototype.render = function () {
+        var meowProvider = function (movieTitle) {
+            return '/Home/MovieDetails/' + movieTitle;
+        };
         return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h1", null, "Wanna work on your search stuff??"),
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1__searchmodule__["SearchInput"], null));
+            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1__searchmodule__["SearchInput"], { urlProvider: meowProvider }));
     };
     return Home;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]));

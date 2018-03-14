@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
 using System;
+using System.Collections.Generic;
 using System.Dynamic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -18,9 +19,9 @@ namespace SearchService
             return controller == "data" && request.Query.ContainsKey("search");
         }
 
-        public Task PopulateData(dynamic viewModel, RouteData routeData, HttpRequest request)
+        public Task<IEnumerable<Movie>> SearchForMovies(string title)
         {
-            var data = new [] {
+            var data = new[] {
                 new Movie
                 {
                     Title = "Black Panther",
@@ -66,18 +67,21 @@ namespace SearchService
                 }
             }.AsEnumerable();
 
-            if (request.Query.ContainsKey("search"))
+            if (!string.IsNullOrWhiteSpace(title))
             {
-                data = data.Where(m => m.Title.ToLowerInvariant().Contains(request.Query["search"].ToString().ToLowerInvariant()));
+                data = data.Where(m => m.Title.ToLowerInvariant().Contains(title.ToLowerInvariant()));
             }
 
-            viewModel.SearchResults = data;
+            return Task.FromResult(data);
+        }
 
-            return Task.CompletedTask;
+        public async Task PopulateData(dynamic viewModel, RouteData routeData, HttpRequest request)
+        {
+            viewModel.SearchResults = await SearchForMovies(request.Query.ContainsKey("search") ? request.Query["search"].ToString() : null);
         }
     }
 
-    class Movie
+    public class Movie
     {
         public string Title { get; set; }
         public string Thumbnail { get; set; }
