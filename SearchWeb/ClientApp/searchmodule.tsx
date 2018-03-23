@@ -25,6 +25,9 @@ export class Thumbnail extends React.Component<any, any> {
                 <hr />
                 <p className="group inner list-group-item-text">{this.movieSummary.description}</p>
                 <div className="row">
+                    <div className="col-xs-12 col-md-4">
+                        <p className="lead">{this.movieSummary.price}</p>
+                    </div>
                     <div className="col-xs-12 col-md-2">
                         <button className="btn btn-success">
                             Trailer
