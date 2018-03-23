@@ -2,11 +2,9 @@
   "name": "microfrontends.search",
   "version": "1.0.0",
   "files": [
-    "SearchWeb/ClientApp/searchmodule.d.ts",
-    "SearchWeb/ClientApp/searchmodule.tsx"
+    "wwwroot/dist/search.js"
   ],
-  "typings": "SearchWeb/ClientApp/searchmodule.d.ts",
-  "main": "SearchWeb/ClientApp/searchmodule.tsx",
+  "main": "wwwroot/dist/search.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

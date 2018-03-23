@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "18104b623799602de7a2"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "24aa8d81ec9f126c19d0"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -2817,8 +2817,6 @@ var Thumbnail = (function (_super) {
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("hr", null),
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("p", { className: "group inner list-group-item-text" }, this.movieSummary.description),
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "row" },
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "col-xs-12 col-md-4" },
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("p", { className: "lead" }, this.movieSummary.price)),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "col-xs-12 col-md-2" },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { className: "btn btn-success" }, "Trailer")),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "col-xs-12 col-md-5 col-md-offset-1" },
